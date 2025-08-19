@@ -45,15 +45,14 @@ function randomDelay(min, max) {
   await page.goto(url, { waitUntil: "networkidle2", timeout: 60000 });
 
   // Stay 5–15 sec
-  await page.waitForTimeout(randomDelay(5000, 15000));
-
+  await new Promise(res => setTimeout(res, randomDelay(5000, 15000)));
   // Scroll randomly 1–3 times
   const scrolls = Math.floor(Math.random() * 3) + 1;
   for (let i = 0; i < scrolls; i++) {
     await page.evaluate(() => {
       window.scrollBy(0, window.innerHeight);
     });
-    await page.waitForTimeout(randomDelay(2000, 5000));
+    await new Promise(res => setTimeout(res, randomDelay(5000, 15000)));
   }
 
   // 50% chance: click a random internal link
@@ -62,7 +61,7 @@ function randomDelay(min, max) {
     const next = links[Math.floor(Math.random() * links.length)];
     console.log(`Clicking: ${next}`);
     await page.goto(next, { waitUntil: "networkidle2", timeout: 60000 });
-    await page.waitForTimeout(randomDelay(3000, 8000));
+   await new Promise(res => setTimeout(res, randomDelay(5000, 15000)));
   }
 
   await browser.close();
