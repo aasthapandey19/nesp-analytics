@@ -1,0 +1,11 @@
+{
+  "name": "website-visitor",
+  "version": "1.0.0",
+  "main": "visit.js",
+  "scripts": {
+    "start": "node visit.js"
+  },
+  "dependencies": {
+    "puppeteer": "^22.0.0"
+  }
+}
