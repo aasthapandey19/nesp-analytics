@@ -1,0 +1,7 @@
+services:
+  - type: cron
+    name: website-visitor
+    env: node
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    schedule: "0 */3 * * *"
